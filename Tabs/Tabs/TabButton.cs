@@ -15,6 +15,11 @@ namespace Sharpnado.Tabs
             typeof(ICommand),
             typeof(TabButton));
 
+        public static readonly BindableProperty ButtonBackgroundProperty = BindableProperty.Create(
+            nameof(ButtonBackground),
+            typeof(Brush),
+            typeof(TabButton));
+
         public static readonly BindableProperty ButtonBackgroundColorProperty = BindableProperty.Create(
             nameof(ButtonBackgroundColor),
             typeof(Color),
@@ -82,6 +87,12 @@ namespace Sharpnado.Tabs
             set => SetValue(CornerRadiusProperty, value);
         }
 
+        public Brush ButtonBackground
+        {
+            get => (Brush)GetValue(ButtonBackgroundProperty);
+            set => SetValue(ButtonBackgroundProperty, value);
+        }
+
         public Color ButtonBackgroundColor
         {
             get => (Color)GetValue(ButtonBackgroundColorProperty);
@@ -122,6 +133,7 @@ namespace Sharpnado.Tabs
             set => SetValue(ExpandToTabSizeProperty, value);
         }
 
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
@@ -130,6 +142,10 @@ namespace Sharpnado.Tabs
             {
                 case nameof(CornerRadius):
                     UpdateCornerRadius();
+                    break;
+
+                case nameof(ButtonBackground):
+                    _imageButton.Background = ButtonBackground;
                     break;
 
                 case nameof(ButtonBackgroundColor):
@@ -234,6 +250,7 @@ namespace Sharpnado.Tabs
             ExpandToTabSize = true;
             IsSelectable = false;
 
+            _imageButton.Background = ButtonBackground;
             _imageButton.BackgroundColor = ButtonBackgroundColor;
             _imageButton.Source = IconImageSource;
             _imageButton.Command = TapCommand;
