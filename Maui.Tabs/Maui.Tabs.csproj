@@ -133,7 +133,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
+        <PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.2" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
         <PackageReference Include="Sharpnado.TaskMonitor" Version="1.0.2" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164">
             <PrivateAssets>all</PrivateAssets>
